@@ -43,7 +43,7 @@
     <item>
      <widget class="QWebView" name="webView">
       <property name="contextMenuPolicy">
-       <enum>Qt::PreventContextMenu</enum>
+       <enum>Qt::DefaultContextMenu</enum>
       </property>
       <property name="url">
        <url>
