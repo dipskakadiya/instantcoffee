@@ -1,0 +1,7 @@
+*.o
+instantcoffee
+moc_*
+ui_*
+qrc_*
+Makefile
+*.pro.user

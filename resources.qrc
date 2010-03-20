@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resources/document_32.png</file>
+        <file>resources/save_32.png</file>
+        <file>resources/stop_32.png</file>
+        <file>resources/folder_32.png</file>
+        <file>resources/home_32.png</file>
+        <file>resources/diagram_64.png</file>
+        <file>resources/flag_32.png</file>
+    </qresource>
+</RCC>
