@@ -30,7 +30,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="resources.qrc">
-    <normaloff>:/resources/diagram_64.png</normaloff>:/resources/diagram_64.png</iconset>
+    <normaloff>:/resources/caffee.png</normaloff>:/resources/caffee.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -142,7 +142,7 @@
   <action name="action_About">
    <property name="icon">
     <iconset resource="resources.qrc">
-     <normaloff>:/resources/home_32.png</normaloff>:/resources/home_32.png</iconset>
+     <normaloff>:/resources/caffee.png</normaloff>:/resources/caffee.png</iconset>
    </property>
    <property name="text">
     <string>&amp;About ...</string>

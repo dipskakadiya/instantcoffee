@@ -11,11 +11,14 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-		mainwindow.cpp
+		mainwindow.cpp \
+    aboutbox.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    aboutbox.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    aboutbox.ui
 
 RESOURCES += \
     resources.qrc

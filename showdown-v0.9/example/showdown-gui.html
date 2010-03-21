@@ -11,14 +11,14 @@
 		//
 		function newText()
 		{
-			setText("");
+			return setText("");
 		}
 		//
 		//	Open document
 		//
 		function openText(filename)
 		{
-			setText(Coffee.fileContent(filename));
+			return setText(Coffee.fileContent(filename));
 		}
 		//
 		// Set Text & Convert
@@ -27,6 +27,7 @@
 		{
 			inputPane.value = text;
 			convertText();
+			return true;
 		}
 		//
 		//	Save (as) document

@@ -7,5 +7,6 @@
         <file>resources/home_32.png</file>
         <file>resources/diagram_64.png</file>
         <file>resources/flag_32.png</file>
+        <file>resources/caffee.png</file>
     </qresource>
 </RCC>

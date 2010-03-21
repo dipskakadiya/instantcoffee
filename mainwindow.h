@@ -45,8 +45,12 @@ namespace Ui {
 class MainWindow : public QMainWindow {
 	Q_OBJECT
 public:
+	//! Constructor
 	explicit MainWindow(QWidget *pParent = 0);
+	//! Destructor
 	~MainWindow();
+	//! Set the internal filename and window title
+	void setFileName(const QString &pFileName);
 
 protected:
 	void changeEvent(QEvent *pEvent);
@@ -60,12 +64,15 @@ protected slots:
 	void saveAsFile(void);
 	void exportHTML(void);
 	void about(void);
+	void onLoad(bool pFinished);
 
 public slots:
 	QString fileContent(const QString &pFileName);
 	bool setFileContent(const QString &pFileName, const QString &pContent);
 
 private:
+	bool newText(void);
+	bool openText(const QString &pFileName);
 	bool saveText(const QString &pFileName);
 	bool saveHTML(const QString &pFileName);
 

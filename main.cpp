@@ -35,6 +35,8 @@
 ==============================================================================*/
 #include <QtGui/QApplication>
 #include "mainwindow.h"
+#include <QDebug>
+#include <QFileInfo>
 
 int main(int argc, char *argv[])
 {
@@ -45,5 +47,12 @@ int main(int argc, char *argv[])
 #else
 	lWin.showMaximized();
 #endif
+
+	QStringList lArgs = lApp.arguments();
+	if(lArgs.size()==2)
+	{
+		lWin.setFileName(lArgs.at(1));
+	}
+
 	return lApp.exec();
 }

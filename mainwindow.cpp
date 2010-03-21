@@ -35,9 +35,10 @@
 ==============================================================================*/
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "aboutbox.h"
+#include <QMessageBox>
 #include <QDebug>
 #include <QCloseEvent>
-#include <QMessageBox>
 #include <QWebFrame>
 #include <QFileDialog>
 
@@ -53,6 +54,12 @@ MainWindow::MainWindow(QWidget *pParent) :
 			 this,
 			 SLOT(attachAPI()) );
 
+	//! OnLoad
+	connect( mUi->webView->page()->mainFrame(),
+			 SIGNAL(loadFinished(bool)),
+			 this,
+			 SLOT(onLoad(bool)));
+
 	QString lPath = QString("%1/showdown-v0.9/example/showdown-gui.html").
 					arg(QApplication::applicationDirPath());
 
@@ -63,6 +70,28 @@ MainWindow::MainWindow(QWidget *pParent) :
 MainWindow::~MainWindow()
 {
 	delete mUi;
+}
+
+void MainWindow::setFileName(const QString &pFileName)
+{
+	if(pFileName.isEmpty())
+	{
+		mFileName = "";
+		setWindowTitle("Instant Coffee [Untitled Markdown]");
+	}
+	else
+	{
+		QFileInfo lFileInfo(pFileName);
+		if(lFileInfo.exists())
+		{
+			mFileName = pFileName;
+			setWindowTitle(QString("Instant Coffee [%1]").arg(lFileInfo.fileName()));
+		}
+		else
+		{
+			setFileName("");
+		}
+	}
 }
 
 void MainWindow::changeEvent(QEvent *pEvent)
@@ -100,9 +129,8 @@ void MainWindow::attachAPI(void)
 
 void MainWindow::newFile(void)
 {
-	mUi->webView->page()->currentFrame()->evaluateJavaScript("newText();");
-	mFileName = "";
-	setWindowTitle("Instant Coffee [Untitled Markdown]");
+	if(newText())
+		setFileName("");
 }
 
 void MainWindow::openFile(void)
@@ -111,15 +139,8 @@ void MainWindow::openFile(void)
 	if(lOpenFileName.isEmpty())
 		return;
 
-	QString lJs = QString("openText('%1');").arg(lOpenFileName);
-	mUi->webView->page()->currentFrame()->evaluateJavaScript(lJs);
-
-	QFileInfo lFileInfo(lOpenFileName);
-	if(lFileInfo.exists())
-	{
-		mFileName = lOpenFileName;
-		setWindowTitle(QString("Instant Coffee [%1]").arg(lFileInfo.fileName()));
-	}
+	if(openText(lOpenFileName))
+		setFileName(lOpenFileName);
 }
 
 void MainWindow::saveFile(void)
@@ -140,14 +161,7 @@ void MainWindow::saveAsFile(void)
 		return;
 
 	if(saveText(lSaveFileName))
-	{
-		QFileInfo lFileInfo(lSaveFileName);
-		if(lFileInfo.exists())
-		{
-			mFileName = lSaveFileName;
-			setWindowTitle(QString("Instant Coffee [%1]").arg(lFileInfo.fileName()));
-		}
-	}
+		setFileName(lSaveFileName);
 }
 
 void MainWindow::exportHTML(void)
@@ -161,9 +175,17 @@ void MainWindow::exportHTML(void)
 
 void MainWindow::about(void)
 {
-	QMessageBox::information(this,
-							 "Instant Coffee",
-							 "Instant Coffee v0.1\nCopyright (c) 2010, Mihail Szabolcs");
+	AboutBox lAboutBox;
+	lAboutBox.exec();
+}
+
+void MainWindow::onLoad(bool pFinished)
+{
+	if(pFinished&&!mFileName.isEmpty())
+	{
+		if(openText(mFileName))
+			qDebug("Loading: %s",static_cast<const char *>(mFileName.toAscii()));
+	}
 }
 
 QString MainWindow::fileContent(const QString &pFileName)
@@ -182,6 +204,18 @@ bool MainWindow::setFileContent(const QString &pFileName, const QString &pConten
 		return (lFile.write(pContent.toAscii())==pContent.size());
 
 	return false;
+}
+
+bool MainWindow::newText(void)
+{
+	QString lJs = "newText();";
+	return mUi->webView->page()->currentFrame()->evaluateJavaScript(lJs).toBool();
+}
+
+bool MainWindow::openText(const QString &pFileName)
+{
+	QString lJs = QString("openText('%1');").arg(pFileName);
+	return mUi->webView->page()->currentFrame()->evaluateJavaScript(lJs).toBool();
 }
 
 bool MainWindow::saveText(const QString &pFileName)
