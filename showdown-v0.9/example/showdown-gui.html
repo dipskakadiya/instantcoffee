@@ -68,6 +68,7 @@
 			margin-bottom: 0;
 			margin-top: 0.4em;
 			color: #766;
+			height:20px;
 		}
 		
 		#pageHeader h1 {
@@ -239,12 +240,7 @@
 		#footer a:hover {
 			text-decoration: underline;
 		}
-		
-		#byline {
-			padding-left: 2em;
-			color: #666;
-		}
-		
+				
 		#convertTextControls {
 			position: absolute;
 			right: 5em;
@@ -283,10 +279,7 @@
 
 <body>
 
-	<div id="pageHeader">
-		<h1><a href="http://www.attacklab.net/showdown-gui.html">Showdown</a></h1>
-		<h4>a javascript port of <a href="http://daringfireball.net/projects/markdown/" title="The Markdown web site">Markdown</a></h4>
-	</div>
+	<div id="pageHeader"></div>
 	
 	<div id="leftContainer">
 		<div class="paneHeader">
@@ -311,10 +304,6 @@ Markdown is a lightweight markup language based on the formatting conventions th
 &gt; or formatting instructions.
 
 This document is written in Markdown; you can see the plain-text version on the left.  To get a feel for Markdown's syntax, type some text into the left window and watch the results in the right.  You can see a Markdown syntax guide by switching the right-hand window from *Preview* to *Syntax Guide*.
-
-Showdown is a Javascript port of Markdown.  You can get the full [source code] by clicking on the version number at the bottom of the page.
-
-**Start with a [blank page] or edit this document in the left window.**
 
   [john gruber]: http://daringfireball.net/
   [1]: http://daringfireball.net/projects/markdown/
@@ -709,37 +698,7 @@ Like code blocks, code spans will be displayed in a monospaced typeface.  Markdo
 
 	</div>
 	
-	<div id="footer">
-		<span id="byline">
-			<b><a href="http://www.attacklab.net/showdown-v0.9.zip">Download v0.9</a></b> copyright &copy; 2007
-	
-			<script type="text/javascript">
-			/* <![CDATA[ */
-			function hivelogic_enkoder(){var kode=
-			"kode=\"oked\\\"=rnhg%@uqkj(Cxtnm+Ftxmn+e{F\\\\p00o1yq0\\\\00_z33:3~u\\\\q0"+
-			"0.0m4tHq,I~.rmhxy{u0\\\\001\\\\77{Fpt3_333_33L{\\\\z00m0\\\\m00w0mo:xqnhz0"+
-			"\\\\00.,\\\\u00x00\\\\00qIh.Qymux,\\\\t00,0\\\\q00M1\\\\t00~0.{.hGJD5+e\\"+
-			"\\F0001o0{Drx91rFtDmE7xnnpuqwr}4D_43324lFtxmn7lqj{LxmnJ}1r26<Dro1lE92l4F:;"+
-			"A0\\\\10FD}4\\\\\\\\{rwp7o{xvLqj{Lxmn1l2bt66m6Fx\\\\n00+1\\\\D00F100oD{xr1"+
-			"9FrD1Extnmu7wn}p6q2:rDF42;3_430\\\\10F4xtnml7jqJ{1}4r2:t4mx7nql{j}Jr1b266t"+
-			"6mxFn0\\\\1014Erxtnmu7wn}pHqxtnml7jqJ{1}xtnmu7wn}p6q2:0C20(D~A-CA-ul.xCoA6"+
-			"Bouqkjr4tkzmAn1o/10\\\\10Ciuqkji4gnIxjuGk.z/o93oA.lBi/61i7C>8~AC1zYoxmtl4u"+
-			"xIsgnIxju.k/i3_33uqkj~C>%@{**i>url+3@l>n?gr1hhojqkwl>..~,@frnhgf1dkFugrDh+"+
-			"w,l60l>+i?f,3.f4@;5{>@.wVlujqi1ruFpdkFugr+h,f0\\\\00rnhg{@;\\\"=x''f;roi(0"+
-			"=i;k<do.eelgnhti;++{)=cokedc.ahCrdoAe(t)i3-i;(f<c)0+c1=82x;=+tSirgnf.orCma"+
-			"hCrdo(e)ck}do=ex\";x='';for(i=0;i<(kode.length-1);i+=2){x+=kode.charAt(i+1"+
-			")+kode.charAt(i)}kode=x+(i<kode.length?kode.charAt(kode.length-1):'');"
-			;var i,c,x;while(eval(kode));}hivelogic_enkoder();
-			/* ]]> */
-			</script>
-			John Fraser
-			<script type="text/javascript">
-			/* <![CDATA[ */
-			document.write("</a>");
-			/* ]]> */
-			</script>
-		</span>
-	
+	<div id="footer">	
 		<span id="convertTextControls">
 			<button id="convertTextButton" type="button" title="Convert text now">
 				Convert text
