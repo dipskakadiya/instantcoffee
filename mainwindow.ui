@@ -85,7 +85,6 @@
    <addaction name="menu_File"/>
    <addaction name="menu_Help"/>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
   <action name="action_Open">
    <property name="icon">
     <iconset resource="resources.qrc">
